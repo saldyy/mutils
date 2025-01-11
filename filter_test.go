@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-type TestCase[T any] struct {
+type FilterTestCase[T any] struct {
 	name      string
 	input     []T
 	predicate Predicate[T]
@@ -13,7 +13,7 @@ type TestCase[T any] struct {
 }
 
 func TestFilterWithInteger(t *testing.T) {
-	tests := []TestCase[int]{
+	tests := []FilterTestCase[int]{
 		{
 			name:  "Filter less than 3",
 			input: []int{1, 2, 3},
@@ -51,7 +51,7 @@ func TestFilterWithInteger(t *testing.T) {
 }
 
 func TestFilterWithString(t *testing.T) {
-	tests := []TestCase[string]{
+	tests := []FilterTestCase[string]{
 		{
 			name:  "Filter less than 3",
 			input: []string{"a", "bb", "ccc"},
@@ -85,7 +85,7 @@ func TestFilterWithStruct(t *testing.T) {
 		name string
 		age  int
 	}
-	tests := []TestCase[People]{
+	tests := []FilterTestCase[People]{
 		{
 			name: "Filter person with age > 18",
 			input: []People{{
